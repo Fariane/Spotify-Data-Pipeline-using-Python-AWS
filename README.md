@@ -49,7 +49,7 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 ### Libraries:
 - `spotipy` for Spotify API interactions, 
 - `pandas`for data manipulation,
-- `boto3` (for interacting with AWS services)
+- `boto3` for interacting with AWS services
 
 ## Benefits
 - **Automation:** The ETL pipeline automates the entire data processing workflow, reducing manual effort and ensuring up-to-date data.
