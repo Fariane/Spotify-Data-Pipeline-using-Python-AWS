@@ -56,6 +56,6 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 - **Scalability:** Using AWS services ensures the solution can scale to handle large volumes of data efficiently.
 - **Flexibility:** The modular design allows for easy integration with other data sources and analytics tools.
 
-  ## Future Enhancements
+## Future Enhancements
 - **Advanced Analytics:** Implement machine learning models to predict song popularity or detect trends in music genres.
 - **Real-Time Streaming:** Consider transitioning to a real-time streaming solution to process live data from Spotify.
