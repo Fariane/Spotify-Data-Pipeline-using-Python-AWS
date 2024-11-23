@@ -44,11 +44,11 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 - **Amazon Athena:** For querying the data stored in S3.
 
 ### Programming Languages :
-- **Python** (for API interactions and ETL scripting)
+- **Python** for API interactions and ETL scripting
 
 ### Libraries:
 - `spotipy` for Spotify API interactions, 
-- `pandas`for data manipulation,
+- `pandas` for data manipulation,
 - `boto3` for interacting with AWS services
 
 ## Benefits
