@@ -8,17 +8,17 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 
 ## Key Components
 
-### Data Extraction:
+### Data Extraction
 - Spotify API: Retrieve music data, including track details, artist information, and albums, using the Spotify API.
 - Authentication: Implement OAuth 2.0 for secure access to the Spotify API.
 - Scheduling: Use Amazon CloudWatch to trigger the pipeline on a daily basis to automatically extract the latest data using Cron syntax
   
-### Data Transformation:
+### Data Transformation
 - Data Cleaning: Cleanse the raw data by handling missing values, duplicates, and inconsistencies.
 - Data Formatting: Transform the data into structured formats (e.g., JSON or CSV) for compatibility with downstream processes.
 - Enrichment: Add additional attributes or aggregate information to enhance the data for analysis.
 
-### Data Loading:
+### Data Loading
 - AWS S3: Store both raw and processed data in AWS S3 for scalable and cost-effective storage.
 - AWS Glue: Use AWS Glue and Crawler to infer schemas and create tables within the database.
 - AWS Athena: Perform SQL analytics on the processed data stored in S3.
@@ -47,9 +47,9 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 - Python (for API interactions and ETL scripting)
 
 ### Libraries:
-- 'spotipy' for Spotify API interactions, 
-- 'pandas' for data manipulation,
-- 'boto3' (for interacting with AWS services)
+- "spotipy" for Spotify API interactions, 
+- "pandas" for data manipulation,
+- "boto3" (for interacting with AWS services)
 
 ## Benefits
 - Automation: The ETL pipeline automates the entire data processing workflow, reducing manual effort and ensuring up-to-date data.
