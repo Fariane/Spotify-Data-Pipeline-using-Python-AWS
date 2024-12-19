@@ -11,7 +11,7 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 ### Data Extraction
 - **Spotify API:** Retrieve music data, including track details, artist information, and albums, using the Spotify API.
 - **Authentication:** Implement OAuth 2.0 for secure access to the Spotify API.
-- **Scheduling:** Use Amazon CloudWatch to trigger the pipeline on a daily basis to automatically extract the latest data using Cron syntax
+- **Scheduling:** Use Amazon CloudWatch to trigger the pipeline on a daily basis to automatically extract the latest data
   
 ### Data Transformation
 - **Data Cleaning:** Cleanse the raw data by handling missing values, duplicates, and inconsistencies.
