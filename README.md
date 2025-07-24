@@ -5,6 +5,12 @@ This project involves building an ETL (Extract, Transform, Load) pipeline using 
 
 ## Architecture
 ![Architecture Diagram](spotify_pipeline_architecture_dgrm.png)
+Spotify API --> AWS Lambda (Extract) --> S3 (Raw Data) ↑ CloudWatch (Daily Trigger)
+
+S3 (Raw Data) --> AWS Lambda (Transform) --> S3 (Transformed Data) ↑ S3 Trigger
+
+S3 (Transformed Data) --> AWS Glue Crawler --> Glue Catalog --> Amazon Athena (SQL Queries)
+
 
 ## Key Components
 
