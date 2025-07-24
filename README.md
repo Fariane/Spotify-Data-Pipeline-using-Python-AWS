@@ -1,67 +1,70 @@
-#  🎵 Spotify Data Pipeline using Python & AWS
+#  🎵 Spotify Data Pipeline avec Python & AWS
 
-## Project Overview
-This project involves building an ETL (Extract, Transform, Load) pipeline using AWS services to collect and process data from Spotify playlists. The goal is to automate the extraction of music data, transform it into structured formats, and store it in AWS for further analysis and insights. The data is organized into separate tables for albums, artists, and tracks.
+## Présentation
+Ce projet consiste à créer un pipeline ETL (Extract, Transform, Load) en utilisant les services AWS. Il récupère automatiquement des données depuis l’API Spotify, les transforme, puis les charge dans AWS pour analyse.
+L’objectif est d’automatiser tout le processus afin de disposer chaque jour de données à jour sur des playlists Spotify, organisées proprement dans des tables (artistes, albums, morceaux) pour permettre des analyses plus poussées.
 
 ## Architecture
 ![Architecture Diagram](spotify_pipeline_architecture_dgrm.png)
-Spotify API --> AWS Lambda (Extract) --> S3 (Raw Data) ↑ CloudWatch (Daily Trigger)
 
-S3 (Raw Data) --> AWS Lambda (Transform) --> S3 (Transformed Data) ↑ S3 Trigger
+Spotify API → AWS Lambda (Extraction) → Amazon S3 (Données brutes) ↑ CloudWatch (Déclencheur quotidien)
 
-S3 (Transformed Data) --> AWS Glue Crawler --> Glue Catalog --> Amazon Athena (SQL Queries)
+Amazon S3 (Données brutes) → AWS Lambda (Transformation) → Amazon S3 (Données transformées) ↑ Déclencheur via ajout d’objet
+
+S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amazon Athena (requêtes SQL)
 
 
-## Key Components
+## Composants principaux
 
 ### Data Extraction
-- **Spotify API:** Retrieve music data, including track details, artist information, and albums, using the Spotify API.
-- **Authentication:** Implement OAuth 2.0 for secure access to the Spotify API.
-- **Scheduling:** Use Amazon CloudWatch to trigger the pipeline on a daily basis to automatically extract the latest data
+- **Spotify API :** Utilisée pour récupérer des données musicales : morceaux, artistes et albums.
+- **Authentification :** Intégration du protocole OAuth 2.0 pour sécuriser l’accès aux endpoints de l’API.
+- **Planification :** Un job CloudWatch lance la fonction Lambda tous les jours pour aller chercher les nouvelles données.
   
 ### Data Transformation
-- **Data Cleaning:** Cleanse the raw data by handling missing values, duplicates, and inconsistencies.
-- **Data Formatting:** Transform the data into structured formats (e.g., JSON or CSV) for compatibility with downstream processes.
-- **Enrichment:** Add additional attributes or aggregate information to enhance the data for analysis.
+- **Nettoyage :** Traitement des valeurs manquantes, doublons, et incohérences dans les données brutes.
+- **Structuration :**  Formatage des données en JSON ou CSV pour les rendre exploitables par les outils d’analyse.
+- **Enrichissement :** Ajout d’attributs supplémentaires ou agrégation de données pour enrichir les analyses
 
 ### Data Loading
-- **AWS S3:** Store both raw and processed data in AWS S3 for scalable and cost-effective storage.
-- **AWS Glue:** Use AWS Glue and Crawler to infer schemas and create tables within the database.
-- **AWS Athena:** Perform SQL analytics on the processed data stored in S3.
-- **Data Partitioning:** Organize data into partitions based on attributes like date or category to optimize query performance.
+- **Amazon S3 :** Toutes les données (brutes & transformées) sont stockées ici.
+- **AWS Glue:** Utilisé pour détecter automatiquement les schémas et créer un catalogue de données exploitable.
+- **AWS Athena:** Permet d’exécuter des requêtes SQL directement sur les fichiers présents dans S3, sans base de données dédiée.
+- **Partitionnement :** Organisation des données par date ou catégorie pour optimiser les performances des requêtes.
 
-## Project Execution Flow
-1. **Data Extraction:** AWS Lambda function is triggered daily via Amazon CloudWatch to extract data from the Spotify API. Extracted data is stored in Amazon S3 (raw data).
+## Déroulement du pipeline
+1. **Extraction des données :** Une fonction AWS Lambda est déclenchée quotidiennement via Amazon CloudWatch pour extraire les données de l’API Spotify. Les données brutes sont stockées dans Amazon S3.
 
-2. **Data Transformation:** Another Lambda function is triggered by S3 object put event. It transforms the raw data and stores it in another Amazon S3 bucket (transformed data).
+2. **Transformation des données :** Une deuxième fonction Lambda s’exécute automatiquement lorsqu’un nouveau fichier est ajouté dans S3. Elle transforme les données et les enregistre dans un autre bucket S3.
 
-3. **Data Cataloging:** AWS Glue infers schema of the transformed data stored in S3, creating a data catalog.
+3. **Catalogage des données :** AWS Glue Crawler détecte les schémas des fichiers transformés et met à jour le Glue Data Catalog.
 
-4. **Querying:** Amazon Athena is used to query the data directly in S3 using standard SQL queries.
+4. **Analyse :** Amazon Athena permet d’interroger les données via SQL directement sur S3.
 
 
-## Tools and Technologies
+## Stack technique
 
 ### AWS Services:
-- **AWS Lambda:** For data extraction and transformation.
-- **Amazon CloudWatch:** To trigger Lambda functions on a scheduled basis.
-- **Amazon S3:** For storing raw and transformed data.
-- **AWS Glue:** For inferring schema and creating a data catalog.
-- **Amazon Athena:** For querying the data stored in S3.
+- **AWS Lambda :** pour tout automatiser (extraction + transformation)
+- **Amazon CloudWatch :** pour planifier les exécutions
+- **Amazon S3 :** pour stocker les données (brutes et transformées)
+- **AWS Glue :** pour inférer les schémas et générer le catalogue
+- **Amazon Athena:** pour l’analyse des données avec SQL
 
 ### Programming Languages :
-- **Python** for API interactions and ETL scripting
+- **Python**  pour les interactions API et les scripts ETL
 
 ### Libraries:
-- `spotipy` for Spotify API interactions, 
-- `pandas` for data manipulation,
-- `boto3` for interacting with AWS services
+- `spotipy` pour communiquer avec l’API Spotify, 
+- `pandas` pour la manipulation des données,
+- `boto3` pour interagir avec les services AWS.
 
 ## Benefits
-- **Automation:** The ETL pipeline automates the entire data processing workflow, reducing manual effort and ensuring up-to-date data.
-- **Scalability:** Using AWS services ensures the solution can scale to handle large volumes of data efficiently.
-- **Flexibility:** The modular design allows for easy integration with other data sources and analytics tools.
+- **Automatisation :** Le pipeline ETL automatise l’ensemble du processus, garantissant une mise à jour régulière des données sans intervention manuelle.
+- **Scalabilité :** L’infrastructure AWS permet de gérer efficacement de grands volumes de données.
+- **Flexibilité :** L’architecture modulaire facilite l’intégration d’autres sources de données ou d’outils analytiques.
 
-## Future Enhancements
-- **Advanced Analytics:** Implement machine learning models to predict song popularity or detect trends in music genres.
-- **Real-Time Streaming:** Consider transitioning to a real-time streaming solution to process live data from Spotify.
+## Améliorations futures
+- **Dashboards interactifs :** Création de dashboards dynamiques avec des outils de data visualisation comme Tableau ou Power BI.
+- **Advanced Analytics :** Intégration de modèles de machine learning pour prédire la popularité d’un morceau ou identifier des tendances musicales.
+- **Real-Time Streaming :** Évolution vers une architecture de streaming pour traiter les données Spotify en direct.
