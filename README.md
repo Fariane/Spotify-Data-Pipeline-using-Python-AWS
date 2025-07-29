@@ -44,15 +44,15 @@ S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amaz
 
 ## Stack technique
 
+### Programming Languages :
+- **Python**  pour les interactions API et les scripts ETL
+
 ### AWS Services:
 - **AWS Lambda :** pour tout automatiser (extraction + transformation)
 - **Amazon CloudWatch :** pour planifier les exécutions
 - **Amazon S3 :** pour stocker les données (brutes et transformées)
 - **AWS Glue :** pour inférer les schémas et générer le catalogue
 - **Amazon Athena:** pour l’analyse des données avec SQL
-
-### Programming Languages :
-- **Python**  pour les interactions API et les scripts ETL
 
 ### Libraries:
 - `spotipy` pour communiquer avec l’API Spotify, 
