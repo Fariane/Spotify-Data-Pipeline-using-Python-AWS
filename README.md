@@ -59,7 +59,7 @@ S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amaz
 - `pandas` pour la manipulation des données,
 - `boto3` pour interagir avec les services AWS.
 
-## Benefits
+## Avantages
 - **Automatisation :** Le pipeline ETL automatise l’ensemble du processus, garantissant une mise à jour régulière des données sans intervention manuelle.
 - **Scalabilité :** L’infrastructure AWS permet de gérer efficacement de grands volumes de données.
 - **Flexibilité :** L’architecture modulaire facilite l’intégration d’autres sources de données ou d’outils analytiques.
