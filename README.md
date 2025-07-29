@@ -2,7 +2,7 @@
 
 ## Présentation
 Ce projet consiste à créer un pipeline ETL (Extract, Transform, Load) en utilisant les services AWS. Il récupère automatiquement des données depuis l’API Spotify, les transforme, puis les charge dans AWS pour analyse.
-L’objectif est d’automatiser tout le processus afin de disposer chaque jour de données à jour sur des playlists Spotify, organisées proprement dans des tables (artistes, albums, morceaux) pour permettre des analyses plus poussées.
+L’objectif est d’automatiser tout le processus afin de disposer chaque jour de données à jour sur des playlists Spotify, organisées proprement dans des tables (artistes, albums, songs) pour permettre des analyses plus poussées.
 
 ## Architecture
 ![Architecture Diagram](spotify_pipeline_architecture_dgrm.png)
@@ -17,7 +17,7 @@ S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amaz
 ## Composants principaux
 
 ### Data Extraction
-- **Spotify API :** Utilisée pour récupérer des données musicales : morceaux, artistes et albums.
+- **Spotify API :** Utilisée pour récupérer des données musicales : artistes, albums et songs.
 - **Authentification :** Intégration du protocole OAuth 2.0 pour sécuriser l’accès aux endpoints de l’API.
 - **Planification :** Un job CloudWatch lance la fonction Lambda tous les jours pour aller chercher les nouvelles données.
   
