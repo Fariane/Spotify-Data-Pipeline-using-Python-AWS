@@ -47,7 +47,7 @@ S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amaz
 ### Programming Languages :
 - **Python**  pour les interactions API et les scripts ETL
 
-### AWS Services:
+### Services AWS :
 - **AWS Lambda :** pour tout automatiser (extraction + transformation)
 - **Amazon CloudWatch :** pour planifier les exécutions
 - **Amazon S3 :** pour stocker les données (brutes et transformées)
