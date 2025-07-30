@@ -66,5 +66,5 @@ S3 (Données transformées) → AWS  Glue Crawler → Glue Data Catalog → Amaz
 
 ## Améliorations futures
 - **Dashboards interactifs :** Création de dashboards dynamiques avec des outils de data visualisation comme Tableau ou Power BI.
-- **Advanced Analytics :** Intégration de modèles de machine learning pour prédire la popularité d’un morceau ou identifier des tendances musicales.
+- **Advanced Analytics :** Intégration de modèles de machine learning pour prédire la popularité d’un song ou identifier des tendances musicales.
 - **Streaming en temps réel :** Évolution vers une architecture de streaming pour traiter les données Spotify en direct.
